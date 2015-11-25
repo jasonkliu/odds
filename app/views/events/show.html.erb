@@ -18,9 +18,9 @@
       <%= comment.guess %>
     </p>
   <% end %>
-<% else %>
 
-<h2>Make a guess:</h2>
+<% else %>
+  <h2>Make a guess:</h2>
   <%= form_for([@event, @event.comments.build]) do |f| %>
     <% if false %>
       <!-- TODO: Show the errors if guess isn't an integer -->
