@@ -1,13 +1,11 @@
-<h2>Event</h2>
-<p>
-  <strong>Number:</strong>
-  <%= @event.number %>
+<h2>Odds: <%= @event.text %></h2>
+
+<p>Share this link with the other person:
+<%= link_to request.original_url, request.original_url %>
 </p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @event.text %>
-</p>
+<p>Pick a number between <strong>1</strong> and <strong><%= @event.number %></strong>. </p>
+<p>After you make your guess, keep refreshing the page to see the results.</p>
 
 <!-- TODO: Validation for more than 2 comments -->
 <% if @event.comments.size >= 2 %>
@@ -22,7 +20,7 @@
   <% end %>
 <% else %>
 
-<h2>Add a comment:</h2>
+<h2>Make a guess:</h2>
   <%= form_for([@event, @event.comments.build]) do |f| %>
     <% if false %>
       <!-- TODO: Show the errors if guess isn't an integer -->
@@ -42,7 +40,7 @@
     <% end %>
 
     <p>
-      <%= f.label :commenter %><br>
+      <%= f.label :name %><br>
       <%= f.text_field :commenter %>
     </p>
     <p>
@@ -55,4 +53,4 @@
   <% end %>
 <% end %>
 
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', controller: :welcome, action: :index %>
