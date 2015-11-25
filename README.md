@@ -1,4 +1,4 @@
-# odds
+# odds [![Build Status](https://travis-ci.org/jasonkliu/odds.svg?branch=master)](https://travis-ci.org/jasonkliu/odds)
 
 Either you or your friend suggests a dare and you want them to do it.  This happens by making them lose 'odds'.
 
