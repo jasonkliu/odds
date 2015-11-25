@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   def new
+    @event = Event.new
   end
 
   def show
@@ -9,7 +10,10 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params.require(:event).permit(:number, :text))
 
-    @event.save
-    redirect_to @event
+    if @event.save
+      redirect_to @event
+    else
+      render 'new'
+    end
   end
 end
