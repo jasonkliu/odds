@@ -1,0 +1,15 @@
+# Documentation: https://docs.travis-ci.com/user/languages/ruby/
+
+# Language
+language: ruby
+
+# Version
+rvm:
+  - 2.2.0
+
+# Cache bundler
+cache: bundler
+
+# Notifications
+notifications:
+  email: false
