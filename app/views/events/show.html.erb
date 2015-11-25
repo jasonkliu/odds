@@ -1,3 +1,4 @@
+<h2>Event</h2>
 <p>
   <strong>Number:</strong>
   <%= @event.number %>
@@ -8,49 +9,50 @@
   <%= @event.text %>
 </p>
 
-<h2>Comments</h2>
-  <!-- TODO: Validation for more than 2 comments -->
-  <% if @event.comments.size >= 2 %>
-    <% @event.comments.each do |comment| %>
-      <p>
-        <strong>Name:</strong>
-        <%= comment.commenter %>
-        <strong>Guess:</strong>
-        <%= comment.guess %>
-      </p>
-    <% end %>
+<!-- TODO: Validation for more than 2 comments -->
+<% if @event.comments.size >= 2 %>
+  <h2>Guesses</h2>
+  <% @event.comments.each do |comment| %>
+    <p>
+      <strong>Name:</strong>
+      <%= comment.commenter %>
+      <strong>Guess:</strong>
+      <%= comment.guess %>
+    </p>
   <% end %>
+<% else %>
 
 <h2>Add a comment:</h2>
-<%= form_for([@event, @event.comments.build]) do |f| %>
-  <% if false %>
-    <!-- TODO: Show the errors if guess isn't an integer -->
-    <% if @comment.errors.any? %>
-      <div id="error_explanation">
-        <h2>
-          <%= pluralize(@comment.errors.count, "error") %> prohibited
-          this comment from being saved:
-        </h2>
-        <ul>
-          <% @comment.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
+  <%= form_for([@event, @event.comments.build]) do |f| %>
+    <% if false %>
+      <!-- TODO: Show the errors if guess isn't an integer -->
+      <% if @comment.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@comment.errors.count, "error") %> prohibited
+            this comment from being saved:
+          </h2>
+          <ul>
+            <% @comment.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <p>
-    <%= f.label :commenter %><br>
-    <%= f.text_field :commenter %>
-  </p>
-  <p>
-    <%= f.label :guess %><br>
-    <%= f.text_field :guess %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+    <p>
+      <%= f.label :commenter %><br>
+      <%= f.text_field :commenter %>
+    </p>
+    <p>
+      <%= f.label :guess %><br>
+      <%= f.text_field :guess %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
 <% end %>
 
 <%= link_to 'Back', events_path %>
