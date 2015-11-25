@@ -7,6 +7,14 @@ language: ruby
 rvm:
   - 2.2.0
 
+# Vars
+env:
+  - DB=postgresql
+
+# Install
+before_script:
+  - RAILS_ENV=test bundle exec rake db:create db:migrate --trace
+
 # Cache bundler
 cache: bundler
 
