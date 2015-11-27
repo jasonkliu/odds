@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-	def create
+  def create
     @event = Event.find(params[:event_id])
     @comment = @event.comments.create(comment_params)
 
